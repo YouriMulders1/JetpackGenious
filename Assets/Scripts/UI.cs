@@ -9,9 +9,7 @@ public class UI : MonoBehaviour
     public Text[] answersTexts;             // array of the 4 answers texts
 
     public Image remainingTimeDial;         // remaining time image with radial fill
-    private float remainingTimeDialRate;    // 1.0 / time per problem
-
-    public Text endText;                    // text displayed a the end of the game (win or game over)
+    private float remainingTimeDialRate;    // 1.0 / time per problems
 
     // instance
     public static UI instance;
@@ -57,26 +55,6 @@ public class UI : MonoBehaviour
         for(int index = 0; index < answersTexts.Length; ++index)
         {
             answersTexts[index].text = problem.answers[index].ToString();
-        }
-    }
-
-    // sets the end text to display if the player won or lost
-    public void SetEndText (bool win)
-    {
-        // enable the end text object
-        endText.gameObject.SetActive(true);
-
-        // did the player win?
-        if (win)
-        {
-            endText.text = "You Win!";
-            endText.color = Color.green;
-        }
-        // did the player lose?
-        else
-        {
-            endText.text = "Game Over!";
-            endText.color = Color.red;
         }
     }
 }

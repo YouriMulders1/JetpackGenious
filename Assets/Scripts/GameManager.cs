@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -75,14 +76,18 @@ public class GameManager : MonoBehaviour
     // called when the player answers all the problems
     void Win ()
     {
-        Time.timeScale = 0.0f;
-        UI.instance.SetEndText(true);
+        Time.timeScale = 1.0f;
+
+        // Laad de WinScreen scène
+        SceneManager.LoadScene("WinScreen"); // Vervang "WinScreen" met de naam van jouw win-scène
     }
 
     // called if the remaining time on a problem reaches 0
     void Lose ()
     {
-        Time.timeScale = 0.0f;
-        UI.instance.SetEndText(false);
+        Time.timeScale = 1.0f;
+
+        // Laad de GameOver scène
+        SceneManager.LoadScene("GameOver"); // Vervang "GameOver" met de naam van jouw game-over scène
     }
 }
