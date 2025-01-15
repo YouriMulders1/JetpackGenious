@@ -1,4 +1,4 @@
-# **Math Tube Challenge**
+# **JetPack Genious**
 
 Math Tube Challenge is een educatieve Unity-game waarin spelers wiskundige sommen oplossen door naar de juiste tube te navigeren. De game biedt eindeloze sommen en een uitdagende gameplay waarbij snelheid en nauwkeurigheid essentieel zijn!
 
@@ -26,7 +26,7 @@ Volg deze stappen om de game lokaal te draaien:
    ```
 
 2. **Open het project in Unity**:
-   - Zorg ervoor dat Unity is geïnstalleerd (minimaal versie 2020.3.0 LTS of hoger).
+   - Zorg ervoor dat Unity is geïnstalleerd.
    - Open de projectmap via Unity Hub of rechtstreeks in Unity.
 
 3. **Speel de game**:
