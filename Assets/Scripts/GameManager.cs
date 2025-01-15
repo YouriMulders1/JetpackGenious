@@ -16,31 +16,37 @@ public class GameManager : MonoBehaviour
     // instance
     public static GameManager instance;
 
-    void Awake ()
+    void Awake()
     {
         // set instance to this script.
         instance = this;
     }
 
-    void Start ()
+    void Start()
     {
+        // Randomize all problems
+        foreach (Problem problem in problems)
+        {
+            problem.Randomize(); // Zorg ervoor dat de Randomize-methode in de Problem-klasse aanwezig is
+        }
+
         // set the initial problem
         SetProblem(0);
     }
 
-    void Update ()
+    void Update()
     {
         remainingTime -= Time.deltaTime;
 
-        // has the remaining time ran out?
-        if(remainingTime <= 0.0f)
+        // has the remaining time run out?
+        if (remainingTime <= 0.0f)
         {
             Lose();
         }
     }
 
     // called when the player enters a tube
-    public void OnPlayerEnterTube (int tube)
+    public void OnPlayerEnterTube(int tube)
     {
         // did they enter the correct tube?
         if (tube == problems[curProblem].correctTube)
@@ -53,20 +59,20 @@ public class GameManager : MonoBehaviour
     void CorrectAnswer()
     {
         // is this the last problem?
-        if(problems.Length - 1 == curProblem)
+        if (problems.Length - 1 == curProblem)
             Win();
         else
             SetProblem(curProblem + 1);
     }
 
     // called when the player enters the incorrect tube
-    void IncorrectAnswer ()
+    void IncorrectAnswer()
     {
         player.Stun();
     }
 
     // sets the current problem
-    void SetProblem (int problem)
+    void SetProblem(int problem)
     {
         curProblem = problem;
         UI.instance.SetProblemText(problems[curProblem]);
@@ -74,20 +80,20 @@ public class GameManager : MonoBehaviour
     }
 
     // called when the player answers all the problems
-    void Win ()
+    void Win()
     {
         Time.timeScale = 1.0f;
 
-        // Laad de WinScreen scène
-        SceneManager.LoadScene("WinScreen"); // Vervang "WinScreen" met de naam van jouw win-scène
+        // Load the WinScreen scene
+        SceneManager.LoadScene("WinScreen"); // Replace "WinScreen" with the name of your win scene
     }
 
     // called if the remaining time on a problem reaches 0
-    void Lose ()
+    void Lose()
     {
         Time.timeScale = 1.0f;
 
-        // Laad de GameOver scène
-        SceneManager.LoadScene("GameOver"); // Vervang "GameOver" met de naam van jouw game-over scène
+        // Load the GameOver scene
+        SceneManager.LoadScene("GameOver"); // Replace "GameOver" with the name of your game-over scene
     }
 }
